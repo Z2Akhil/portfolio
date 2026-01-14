@@ -1,5 +1,6 @@
 import './App.css'
-import Header from './components/Header'
+import ProfileCard from './components/ProfileCard'
+import NavPills from './components/NavPills'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -9,16 +10,22 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900">
-      <Header />
-      <main>
+    <div className="portfolio-layout">
+      {/* Navigation Pills - Top Center */}
+      <NavPills />
+
+      {/* Fixed Profile Card - Left Side */}
+      <ProfileCard />
+
+      {/* Main Content - Right Side */}
+      <main className="main-content">
         <Hero />
         <About />
         <Skills />
         <Projects />
         <Contact />
+        <Footer />
       </main>
-      <Footer />
     </div>
   )
 }
