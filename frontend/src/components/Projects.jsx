@@ -52,7 +52,7 @@ const Projects = () => {
 
     return (
         <section id="projects">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto px-4">
                 <div className="mb-16 text-center">
                     <h2 className="section-title">
                         Selected <span className="hero-gradient-text">Projects</span>

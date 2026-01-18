@@ -43,13 +43,13 @@ const Hero = () => {
                     </div>
 
                     {/* CTA Buttons - Premium feel */}
-                    <div className="flex flex-wrap gap-6 pt-8 justify-center items-center">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-6 sm:pt-8 justify-center items-center px-4 sm:px-0">
                         <a
                             href="#projects"
-                            className="group relative px-10 py-5 bg-purple-600 text-white font-bold rounded-2xl transition-all duration-300 hover:bg-purple-700 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)] active:scale-95"
+                            className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-purple-600 text-white font-bold rounded-2xl transition-all duration-300 hover:bg-purple-700 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)] active:scale-95 text-center"
                         >
-                            <span className="relative z-10 flex items-center gap-2">
-                                View Selection
+                            <span className="flex items-center justify-center gap-2">
+                                View Projects
                                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
@@ -57,7 +57,7 @@ const Hero = () => {
                         </a>
                         <a
                             href="#contact"
-                            className="px-10 py-5 border-2 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/5 font-bold rounded-2xl transition-all duration-300 active:scale-95 backdrop-blur-sm"
+                            className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/5 font-bold rounded-2xl transition-all duration-300 active:scale-95 text-center"
                         >
                             Get in Touch
                         </a>

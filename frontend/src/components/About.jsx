@@ -47,15 +47,11 @@ const About = () => {
                         <div className="flex flex-wrap gap-6 pt-4 justify-center md:justify-start">
                             <div className="text-center">
                                 <p className="text-3xl font-bold text-purple-400">2+</p>
-                                <p className="text-slate-500 text-sm uppercase tracking-wider">Years Exp</p>
-                            </div>
-                            <div className="text-center">
-                                <p className="text-3xl font-bold text-purple-400">10+</p>
-                                <p className="text-slate-500 text-sm uppercase tracking-wider">Projects</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Years Innovation</p>
                             </div>
                             <div className="text-center">
                                 <p className="text-3xl font-bold text-purple-400">5+</p>
-                                <p className="text-slate-500 text-sm uppercase tracking-wider">Technologies</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Projects</p>
                             </div>
                         </div>
                     </div>
