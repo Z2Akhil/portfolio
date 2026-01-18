@@ -1,50 +1,335 @@
+import { useState } from 'react';
+
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // Environment variables (from .env file)
+    const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE';
+    const myEmail = import.meta.env.VITE_EMAIL || 'your.email@example.com';
+    const myLocation = import.meta.env.VITE_LOCATION || 'Your City, Country';
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        setErrorMessage('');
+
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject || 'New Portfolio Contact',
+                    message: formData.message,
+                    from_name: "Portfolio Contact Form",
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setStatus('success');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+
+                // Reset status after 5 seconds
+                setTimeout(() => {
+                    setStatus('idle');
+                }, 5000);
+            } else {
+                throw new Error(result.message || 'Something went wrong');
+            }
+        } catch (error) {
+            setStatus('error');
+            setErrorMessage(error.message || 'Failed to send message. Please try again.');
+
+            // Reset error after 5 seconds
+            setTimeout(() => {
+                setStatus('idle');
+                setErrorMessage('');
+            }, 5000);
+        }
+    };
+
+    const socialLinks = [
+        {
+            name: 'GitHub',
+            url: import.meta.env.VITE_GITHUB_URL || 'https://github.com/yourusername',
+            icon: (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z" />
+                </svg>
+            )
+        },
+        {
+            name: 'LinkedIn',
+            url: import.meta.env.VITE_LINKEDIN_URL || 'https://linkedin.com/in/yourusername',
+            icon: (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+            )
+        },
+        {
+            name: 'Twitter',
+            url: import.meta.env.VITE_TWITTER_URL || 'https://twitter.com/yourusername',
+            icon: (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+            )
+        },
+        {
+            name: 'Instagram',
+            url: import.meta.env.VITE_INSTAGRAM_URL || 'https://instagram.com/yourusername',
+            icon: (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+            )
+        }
+    ];
+
+    const contactInfo = [
+        {
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            ),
+            label: 'Email',
+            value: myEmail,
+            href: `mailto:${myEmail}`
+        },
+        {
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            ),
+            label: 'Location',
+            value: myLocation,
+            href: null
+        }
+    ];
+
     return (
-        <section id="contact" className="py-20" style={{ background: 'var(--background)' }}>
-            <div className="max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                        Let's Create<br />
-                        Something <span className="text-purple-500">Amazing</span>
+        <section id="contact">
+            <div className="max-w-6xl mx-auto px-4">
+                <div className="mb-16 text-center">
+                    <h2 className="section-title">
+                        Let's <span className="hero-gradient-text">Connect</span>
                     </h2>
+                    <p className="section-subtitle mx-auto">
+                        Have a project in mind or just want to say hi? Feel free to reach out.
+                        I'm always open to discussing new opportunities.
+                    </p>
                 </div>
 
-                {/* Contact Form */}
-                <form className="space-y-5 max-w-xl">
-                    <div>
-                        <label className="block text-slate-400 text-sm mb-2">Name</label>
-                        <input
-                            type="text"
-                            placeholder="Your Name"
-                            className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
-                        />
+                <div className="grid lg:grid-cols-5 gap-12">
+                    {/* Left Side - Contact Info */}
+                    <div className="lg:col-span-2 space-y-8">
+                        {/* Contact Cards */}
+                        <div className="space-y-4">
+                            {contactInfo.map((info, index) => (
+                                <a
+                                    key={index}
+                                    href={info.href}
+                                    className={`flex items-center gap-4 p-5 bg-slate-900/50 border border-slate-800/50 rounded-2xl transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-900 ${info.href ? 'cursor-pointer' : 'cursor-default'}`}
+                                >
+                                    <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                                        {info.icon}
+                                    </div>
+                                    <div>
+                                        <p className="text-slate-500 text-xs uppercase tracking-widest font-bold">{info.label}</p>
+                                        <p className="text-white font-medium">{info.value}</p>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="pt-6">
+                            <p className="text-slate-500 text-xs uppercase tracking-widest font-bold mb-4">Follow Me</p>
+                            <div className="flex gap-3">
+                                {socialLinks.map((social) => (
+                                    <a
+                                        key={social.name}
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-12 h-12 rounded-xl bg-slate-900/50 border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-purple-400 hover:border-purple-500/50 hover:bg-slate-900 transition-all duration-300"
+                                        aria-label={social.name}
+                                    >
+                                        {social.icon}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Availability Badge */}
+                        <div className="p-5 bg-gradient-to-r from-purple-500/10 to-emerald-500/10 border border-purple-500/20 rounded-2xl">
+                            <div className="flex items-center gap-3">
+                                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
+                                <p className="text-white font-medium">Currently available for freelance work</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <label className="block text-slate-400 text-sm mb-2">Email</label>
-                        <input
-                            type="email"
-                            placeholder="Your@email.com"
-                            className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
-                        />
+
+                    {/* Right Side - Form */}
+                    <div className="lg:col-span-3">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="block text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">
+                                        Full Name <span className="text-purple-500">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        placeholder="John Doe"
+                                        className="w-full px-5 py-4 bg-slate-900/50 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 focus:bg-slate-900 transition-all duration-300"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="block text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">
+                                        Email Address <span className="text-purple-500">*</span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        placeholder="john@example.com"
+                                        className="w-full px-5 py-4 bg-slate-900/50 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 focus:bg-slate-900 transition-all duration-300"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="block text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">
+                                    Subject
+                                </label>
+                                <input
+                                    type="text"
+                                    name="subject"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    placeholder="Project Inquiry"
+                                    className="w-full px-5 py-4 bg-slate-900/50 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 focus:bg-slate-900 transition-all duration-300"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="block text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">
+                                    Your Message <span className="text-purple-500">*</span>
+                                </label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    placeholder="Tell me about your project, goals, and timeline..."
+                                    rows="5"
+                                    className="w-full px-5 py-4 bg-slate-900/50 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 focus:bg-slate-900 transition-all duration-300 resize-none"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={status === 'loading' || status === 'success'}
+                                className={`group w-full md:w-auto px-10 py-4 font-bold rounded-xl transition-all duration-300 active:scale-95 ${status === 'success'
+                                    ? 'bg-emerald-600 text-white cursor-default'
+                                    : status === 'error'
+                                        ? 'bg-red-600 text-white'
+                                        : status === 'loading'
+                                            ? 'bg-purple-600/70 text-white cursor-wait'
+                                            : 'bg-purple-600 text-white hover:bg-purple-700 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)]'
+                                    }`}
+                            >
+                                <span className="flex items-center justify-center gap-2">
+                                    {status === 'loading' ? (
+                                        <>
+                                            <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                            </svg>
+                                            Sending...
+                                        </>
+                                    ) : status === 'success' ? (
+                                        <>
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Message Sent!
+                                        </>
+                                    ) : status === 'error' ? (
+                                        <>
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                            Try Again
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Message
+                                            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </>
+                                    )}
+                                </span>
+                            </button>
+
+                            {/* Status Messages */}
+                            {status === 'success' && (
+                                <p className="text-emerald-400 text-sm flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Thank you! Your message has been sent successfully.
+                                </p>
+                            )}
+
+                            {status === 'error' && (
+                                <p className="text-red-400 text-sm flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    {errorMessage}
+                                </p>
+                            )}
+                        </form>
                     </div>
-                    <div>
-                        <label className="block text-slate-400 text-sm mb-2">Message</label>
-                        <textarea
-                            placeholder="Your Message"
-                            rows="5"
-                            className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25"
-                    >
-                        Send
-                    </button>
-                </form>
+                </div>
             </div>
         </section>
     )
 }
 
 export default Contact
+

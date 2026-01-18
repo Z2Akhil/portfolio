@@ -1,40 +1,59 @@
 const About = () => {
+    // Profile image - add your image to public folder or use a URL
+    const profileImage = import.meta.env.VITE_PROFILE_IMAGE || '/profile.jpg';
+
     return (
-        <section id="about" className="py-20" style={{ background: 'var(--background)' }}>
-            <div className="max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        About <span className="text-purple-500">Me</span>
+        <section id="about">
+            <div className="max-w-5xl mx-auto px-4">
+                <div className="mb-16 text-center">
+                    <h2 className="section-title">
+                        About <span className="hero-gradient-text">Me</span>
                     </h2>
-                    <div className="w-24 h-1 bg-purple-500 rounded-full"></div>
                 </div>
 
-                <div className="space-y-6">
-                    <p className="text-slate-300 text-lg leading-relaxed">
-                        I'm a passionate developer with experience in building web applications.
-                        I love turning ideas into reality through code and creating solutions
-                        that make a difference.
-                    </p>
-                    <p className="text-slate-300 text-lg leading-relaxed">
-                        When I'm not coding, you can find me exploring new technologies,
-                        contributing to open source, or learning something new.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 pt-4">
-                        <div>
-                            <h4 className="text-purple-400 font-semibold">Name:</h4>
-                            <p className="text-slate-300">Your Name</p>
+                <div className="flex flex-col md:flex-row items-center gap-12">
+                    {/* Profile Image - Left/Top */}
+                    <div className="flex-shrink-0">
+                        <div className="relative">
+                            {/* Gradient ring around image */}
+                            <div className="absolute -inset-1 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full blur-sm opacity-75" />
+                            <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-slate-900">
+                                <img
+                                    src={profileImage}
+                                    alt="Profile"
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        // Fallback to placeholder if image fails to load
+                                        e.target.src = 'https://ui-avatars.com/api/?name=AK&size=256&background=a855f7&color=fff&bold=true';
+                                    }}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <h4 className="text-purple-400 font-semibold">Email:</h4>
-                            <p className="text-slate-300">your@email.com</p>
-                        </div>
-                        <div>
-                            <h4 className="text-purple-400 font-semibold">Location:</h4>
-                            <p className="text-slate-300">Your City, Country</p>
-                        </div>
-                        <div>
-                            <h4 className="text-purple-400 font-semibold">Available:</h4>
-                            <p className="text-emerald-400">Open for opportunities</p>
+                    </div>
+
+                    {/* About Text - Right/Bottom */}
+                    <div className="flex-1 space-y-6 text-center md:text-left">
+                        <p className="text-slate-300 text-xl leading-relaxed font-light">
+                            I'm a full-stack engineer specializing in MERN stack development,
+                            scalable backend systems, and real-time communication using Socket.IO.
+                            Currently pursuing B.Tech in CSE at NIT Jamshedpur.
+                        </p>
+                        <p className="text-slate-400 text-lg leading-relaxed">
+                            I've built and deployed production applications including a healthcare
+                            booking platform and multiplayer typing games. Strong understanding of
+                            performance optimization, system design, and algorithms.
+                        </p>
+
+                        {/* Quick Stats */}
+                        <div className="flex flex-wrap gap-6 pt-4 justify-center md:justify-start">
+                            <div className="text-center">
+                                <p className="text-3xl font-bold text-purple-400">2+</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Years Innovation</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-3xl font-bold text-purple-400">5+</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Projects</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,3 +63,4 @@ const About = () => {
 }
 
 export default About
+

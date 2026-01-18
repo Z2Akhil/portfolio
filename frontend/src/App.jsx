@@ -1,6 +1,5 @@
 import './App.css'
-import ProfileCard from './components/ProfileCard'
-import NavPills from './components/NavPills'
+import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -10,19 +9,16 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="portfolio-layout">
-      {/* Navigation Pills - Top Center */}
-      <NavPills />
+    <div className="min-h-screen flex flex-col">
+      {/* Navbar - Fixed Top */}
+      <Navbar />
 
-      {/* Fixed Profile Card - Left Side */}
-      <ProfileCard />
-
-      {/* Main Content - Right Side */}
-      <main className="main-content">
+      {/* Main Content - Centered */}
+      <main>
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Contact />
         <Footer />
       </main>

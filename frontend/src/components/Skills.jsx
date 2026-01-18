@@ -1,61 +1,129 @@
 const Skills = () => {
-    const skills = [
-        { name: 'React', level: 90, color: 'from-purple-400 to-purple-600' },
-        { name: 'JavaScript', level: 85, color: 'from-purple-400 to-purple-600' },
-        { name: 'Node.js', level: 80, color: 'from-purple-400 to-purple-600' },
-        { name: 'TypeScript', level: 75, color: 'from-purple-400 to-purple-600' },
-        { name: 'Tailwind CSS', level: 90, color: 'from-purple-400 to-purple-600' },
-        { name: 'MongoDB', level: 70, color: 'from-purple-400 to-purple-600' },
-    ]
+    // Tech stacks organized in three rows based on resume
+    const techRows = [
+        // Row 1 - Languages & Frontend
+        [ 
+            { name: 'Next.js', icon: '▲', color: '#ffffff' },
+            { name: 'TypeScript', icon: '📘', color: '#3178C6' },
+            { name: 'C++', icon: '⚡', color: '#00599C' },
+            { name: 'Python', icon: '🐍', color: '#3776AB' },
+            { name: 'JavaScript', icon: '🟨', color: '#F7DF1E' },
+            { name: 'SQL', icon: '🗄️', color: '#4479A1' },
+            { name: 'React.js', icon: '⚛️', color: '#61DAFB' },
+            { name: 'Tailwind CSS', icon: '🎨', color: '#06B6D4' },
+            { name: 'Bootstrap', icon: '🅱️', color: '#7952B3' },
+        ],
+        // Row 2 - Backend & Database
+        [
+            { name: 'Node.js', icon: '🟢', color: '#339933' },
+            { name: 'Express.js', icon: '⚡', color: '#ffffff' },
+            { name: 'MongoDB', icon: '🍃', color: '#47A248' },
+            { name: 'PostgreSQL', icon: '🐘', color: '#4169E1' },
+            { name: 'Redis', icon: '🔴', color: '#DC382D' },
+            { name: 'Socket.IO', icon: '🔌', color: '#e7e1e1ff' },
+            { name: 'REST APIs', icon: '🔗', color: '#FF6B6B' },
+            { name: 'Firebase', icon: '🔥', color: '#FFCA28' },
+            { name: 'JWT', icon: '🔐', color: '#000000' },
+        ],
+        // Row 3 - Tools & Core CS
+        [
+            { name: 'Git', icon: '📦', color: '#F05032' },
+            { name: 'GitHub', icon: '🐙', color: '#ffffff' },
+            { name: 'Docker', icon: '🐳', color: '#2496ED' },
+            { name: 'VS Code', icon: '💻', color: '#007ACC' },
+            { name: 'Figma', icon: '🎨', color: '#F24E1E' },
+            { name: 'Postman', icon: '📮', color: '#FF6C37' },
+            { name: 'DSA', icon: '🧮', color: '#9333EA' },
+            { name: 'Cron Jobs', icon: '⏰', color: '#00D8FF' },
+        ],
+    ];
 
-    const tools = [
-        'Git', 'VS Code', 'Figma', 'Docker', 'Postman', 'GitHub'
-    ]
+    // Component for a single sliding row
+    const MarqueeRow = ({ items, direction = 'left', speed = 25 }) => {
+        const animationClass = direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right';
 
-    return (
-        <section id="skills" className="py-20" style={{ background: 'var(--background)' }}>
-            <div className="max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        My <span className="text-purple-500">Skills</span>
-                    </h2>
-                    <div className="w-24 h-1 bg-purple-500 rounded-full"></div>
+        return (
+            <div className="relative flex overflow-hidden group py-4">
+                {/* Gradient overlays for fade effect */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+                {/* First set of items */}
+                <div
+                    className={`flex gap-6 ${animationClass} group-hover:[animation-play-state:paused]`}
+                    style={{ animationDuration: `${speed}s` }}
+                >
+                    {items.map((tech, index) => (
+                        <div
+                            key={`${tech.name}-1-${index}`}
+                            className="flex items-center gap-3 px-6 py-3 bg-slate-900/50 border border-slate-800/50 rounded-2xl hover:border-purple-500/50 hover:bg-slate-800/50 transition-all duration-300 cursor-default shrink-0"
+                        >
+                            <span className="text-2xl">{tech.icon}</span>
+                            <span
+                                className="text-sm font-semibold whitespace-nowrap"
+                                style={{ color: tech.color }}
+                            >
+                                {tech.name}
+                            </span>
+                        </div>
+                    ))}
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    {/* Skills Bars */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-semibold text-white mb-6">Technical Skills</h3>
-                        {skills.map((skill) => (
-                            <div key={skill.name} className="space-y-2">
-                                <div className="flex justify-between">
-                                    <span className="text-slate-300 font-medium">{skill.name}</span>
-                                    <span className="text-purple-400">{skill.level}%</span>
-                                </div>
-                                <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
-                                    <div
-                                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-500`}
-                                        style={{ width: `${skill.level}%` }}
-                                    ></div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Tools */}
-                    <div>
-                        <h3 className="text-xl font-semibold text-white mb-6">Tools & Technologies</h3>
-                        <div className="flex flex-wrap gap-3">
-                            {tools.map((tool) => (
-                                <span
-                                    key={tool}
-                                    className="px-4 py-2 bg-zinc-800 text-slate-300 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 cursor-default"
-                                >
-                                    {tool}
-                                </span>
-                            ))}
+                {/* Duplicate set for seamless loop */}
+                <div
+                    className={`flex gap-6 ${animationClass} group-hover:[animation-play-state:paused]`}
+                    style={{ animationDuration: `${speed}s` }}
+                >
+                    {items.map((tech, index) => (
+                        <div
+                            key={`${tech.name}-2-${index}`}
+                            className="flex items-center gap-3 px-6 py-3 bg-slate-900/50 border border-slate-800/50 rounded-2xl hover:border-purple-500/50 hover:bg-slate-800/50 transition-all duration-300 cursor-default shrink-0"
+                        >
+                            <span className="text-2xl">{tech.icon}</span>
+                            <span
+                                className="text-sm font-semibold whitespace-nowrap"
+                                style={{ color: tech.color }}
+                            >
+                                {tech.name}
+                            </span>
                         </div>
-                    </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
+    return (
+        <section id="skills" className="overflow-hidden">
+            <div className="max-w-6xl mx-auto px-4">
+                <div className="mb-16 text-center">
+                    <h2 className="section-title">
+                        Technical <span className="hero-gradient-text">Expertise</span>
+                    </h2>
+                    <p className="section-subtitle mx-auto">
+                        A comprehensive set of tools and technologies I use to bring ideas to life.
+                    </p>
+                </div>
+            </div>
+
+            {/* Sliding rows - full width */}
+            <div className="space-y-2">
+                {/* Row 1 - Left to Right */}
+                <div>
+                    <p className="text-xs uppercase tracking-widest text-slate-600 font-bold mb-3 text-center">Frontend & UI</p>
+                    <MarqueeRow items={techRows[0]} direction="left" speed={30} />
+                </div>
+
+                {/* Row 2 - Right to Left */}
+                <div>
+                    <p className="text-xs uppercase tracking-widest text-slate-600 font-bold mb-3 text-center">Backend & Database</p>
+                    <MarqueeRow items={techRows[1]} direction="right" speed={35} />
+                </div>
+
+                {/* Row 3 - Left to Right */}
+                <div>
+                    <p className="text-xs uppercase tracking-widest text-slate-600 font-bold mb-3 text-center">Tools & DevOps</p>
+                    <MarqueeRow items={techRows[2]} direction="left" speed={28} />
                 </div>
             </div>
         </section>
@@ -63,3 +131,4 @@ const Skills = () => {
 }
 
 export default Skills
+
