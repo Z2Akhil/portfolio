@@ -79,44 +79,20 @@ body::before {
   flex: 1;
 }
 
-/* Navigation Pills - Floating Clean Glassmorphism */
-.nav-pills {
+/* Navbar Styles */
+.navbar {
   position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  padding: 10px 20px;
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
 
-.nav-pill {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  border-radius: 50%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.nav-pill:hover {
-  color: var(--primary-light);
-  transform: translateY(-2px);
-}
-
-.nav-pill.active {
-  background: var(--primary);
-  color: white;
-  box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+.navbar.scrolled {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 /* ==================== */
@@ -124,7 +100,7 @@ body::before {
 /* ==================== */
 
 section {
-  padding: 140px 0;
+  padding: 100px 0;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
 }

@@ -1,5 +1,5 @@
 import './App.css'
-import NavPills from './components/NavPills'
+import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -10,8 +10,8 @@ import Footer from './components/Footer'
 function App() {
   return (
     <div className="portfolio-layout">
-      {/* Navigation Pills - Top Center */}
-      <NavPills />
+      {/* Navbar - Fixed Top */}
+      <Navbar />
 
       {/* Main Content - Centered */}
       <main>

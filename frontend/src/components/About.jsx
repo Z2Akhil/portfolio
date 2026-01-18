@@ -1,40 +1,61 @@
 const About = () => {
+    // Profile image - add your image to public folder or use a URL
+    const profileImage = import.meta.env.VITE_PROFILE_IMAGE || '/profile.jpg';
+
     return (
         <section id="about">
-            <div className="max-w-4xl mx-auto">
-                <div className="mb-16">
+            <div className="max-w-5xl mx-auto px-4">
+                <div className="mb-16 text-center">
                     <h2 className="section-title">
                         About <span className="hero-gradient-text">Me</span>
                     </h2>
                 </div>
 
-                <div className="space-y-10">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <div className="space-y-6">
-                            <p className="text-slate-300 text-xl leading-relaxed font-light">
-                                I'm a passionate developer with experience in building web applications.
-                                I love turning ideas into reality through code and creating solutions
-                                that make a difference.
-                            </p>
-                            <p className="text-slate-400 text-lg leading-relaxed">
-                                When I'm not coding, you can find me exploring new technologies,
-                                contributing to open source, or learning something new.
-                            </p>
+                <div className="flex flex-col md:flex-row items-center gap-12">
+                    {/* Profile Image - Left/Top */}
+                    <div className="flex-shrink-0">
+                        <div className="relative">
+                            {/* Gradient ring around image */}
+                            <div className="absolute -inset-1 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full blur-sm opacity-75" />
+                            <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-slate-900">
+                                <img
+                                    src={profileImage}
+                                    alt="Profile"
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        // Fallback to placeholder if image fails to load
+                                        e.target.src = 'https://ui-avatars.com/api/?name=AK&size=256&background=a855f7&color=fff&bold=true';
+                                    }}
+                                />
+                            </div>
                         </div>
-                        <div className="card space-y-6">
-                            <div className="grid grid-cols-1 gap-6">
-                                <div>
-                                    <h4 className="text-purple-400 font-bold text-xs uppercase tracking-widest mb-1">Email</h4>
-                                    <p className="text-slate-200 font-medium">your@email.com</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-purple-400 font-bold text-xs uppercase tracking-widest mb-1">Location</h4>
-                                    <p className="text-slate-200 font-medium">Your City, Country</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-purple-400 font-bold text-xs uppercase tracking-widest mb-1">Status</h4>
-                                    <p className="text-emerald-400 font-medium">Available for New Projects</p>
-                                </div>
+                    </div>
+
+                    {/* About Text - Right/Bottom */}
+                    <div className="flex-1 space-y-6 text-center md:text-left">
+                        <p className="text-slate-300 text-xl leading-relaxed font-light">
+                            I'm a passionate developer with experience in building web applications.
+                            I love turning ideas into reality through code and creating solutions
+                            that make a difference.
+                        </p>
+                        <p className="text-slate-400 text-lg leading-relaxed">
+                            When I'm not coding, you can find me exploring new technologies,
+                            contributing to open source, or learning something new.
+                        </p>
+
+                        {/* Quick Stats */}
+                        <div className="flex flex-wrap gap-6 pt-4 justify-center md:justify-start">
+                            <div className="text-center">
+                                <p className="text-3xl font-bold text-purple-400">2+</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Years Exp</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-3xl font-bold text-purple-400">10+</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Projects</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-3xl font-bold text-purple-400">5+</p>
+                                <p className="text-slate-500 text-sm uppercase tracking-wider">Technologies</p>
                             </div>
                         </div>
                     </div>
@@ -45,3 +66,4 @@ const About = () => {
 }
 
 export default About
+
