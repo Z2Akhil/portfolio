@@ -134,6 +134,33 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Marquee Animations for Skills Slider */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right linear infinite;
+}
+
 .section-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;

@@ -10,7 +10,7 @@ const Hero = () => {
             <div className="absolute inset-0 z-0">
                 <Threads
                     amplitude={2.3}
-                    distance={0.5}
+                    distance={0.1}
                     enableMouseInteraction={true}
                 />
             </div>
