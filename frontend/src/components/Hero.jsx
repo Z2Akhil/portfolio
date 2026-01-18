@@ -21,24 +21,25 @@ const Hero = () => {
                     {/* Professional greeting with subtle animation delay */}
                     <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                         <span className="inline-block py-1 px-3 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold tracking-wider uppercase border border-purple-500/20 backdrop-blur-sm">
-                            Available for work
+                            B.Tech CSE @ NIT Jamshedpur
                         </span>
                     </div>
 
                     {/* Main headline - Expansive and bold */}
                     <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
-                        Building <span className="hero-gradient-text">digital</span><br />
-                        experiences.
+                        Building <span className="hero-gradient-text">scalable</span><br />
+                        web apps.
                     </h1>
 
                     {/* Professional title and description - Simple yet impactful */}
                     <div className="space-y-6 max-w-2xl mx-auto">
                         <h2 className="text-2xl sm:text-3xl text-slate-200 font-medium">
-                            Full Stack Developer & Designer
+                            Full Stack Engineer | MERN Stack
                         </h2>
                         <p className="text-slate-400 text-lg sm:text-xl leading-relaxed">
-                            I specialize in creating high-performance, accessible, and beautiful
-                            web applications that solve real-world problems with modern tech.
+                            I specialize in MERN stack development, scalable backend systems, and
+                            real-time communication. Built production apps including a healthcare platform
+                            and multiplayer games.
                         </p>
                     </div>
 

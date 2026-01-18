@@ -1,29 +1,31 @@
 const Skills = () => {
-    // Tech stacks organized in three rows
+    // Tech stacks organized in three rows based on resume
     const techRows = [
-        // Row 1 - Frontend & UI
-        [
-            { name: 'React', icon: '⚛️', color: '#61DAFB' },
+        // Row 1 - Languages & Frontend
+        [ 
             { name: 'Next.js', icon: '▲', color: '#ffffff' },
             { name: 'TypeScript', icon: '📘', color: '#3178C6' },
+            { name: 'C++', icon: '⚡', color: '#00599C' },
+            { name: 'Python', icon: '🐍', color: '#3776AB' },
             { name: 'JavaScript', icon: '🟨', color: '#F7DF1E' },
+            { name: 'SQL', icon: '🗄️', color: '#4479A1' },
+            { name: 'React.js', icon: '⚛️', color: '#61DAFB' },
             { name: 'Tailwind CSS', icon: '🎨', color: '#06B6D4' },
-            { name: 'Redux', icon: '🔄', color: '#764ABC' },
-            { name: 'HTML5', icon: '🌐', color: '#E34F26' },
-            { name: 'CSS3', icon: '🎯', color: '#1572B6' },
+            { name: 'Bootstrap', icon: '🅱️', color: '#7952B3' },
         ],
         // Row 2 - Backend & Database
         [
             { name: 'Node.js', icon: '🟢', color: '#339933' },
-            { name: 'Express', icon: '⚡', color: '#ffffff' },
+            { name: 'Express.js', icon: '⚡', color: '#ffffff' },
             { name: 'MongoDB', icon: '🍃', color: '#47A248' },
             { name: 'PostgreSQL', icon: '🐘', color: '#4169E1' },
-            { name: 'Python', icon: '🐍', color: '#3776AB' },
+            { name: 'Redis', icon: '🔴', color: '#DC382D' },
+            { name: 'Socket.IO', icon: '🔌', color: '#e7e1e1ff' },
             { name: 'REST APIs', icon: '🔗', color: '#FF6B6B' },
-            { name: 'GraphQL', icon: '◈', color: '#E10098' },
             { name: 'Firebase', icon: '🔥', color: '#FFCA28' },
+            { name: 'JWT', icon: '🔐', color: '#000000' },
         ],
-        // Row 3 - Tools & DevOps
+        // Row 3 - Tools & Core CS
         [
             { name: 'Git', icon: '📦', color: '#F05032' },
             { name: 'GitHub', icon: '🐙', color: '#ffffff' },
@@ -31,8 +33,8 @@ const Skills = () => {
             { name: 'VS Code', icon: '💻', color: '#007ACC' },
             { name: 'Figma', icon: '🎨', color: '#F24E1E' },
             { name: 'Postman', icon: '📮', color: '#FF6C37' },
-            { name: 'Vite', icon: '⚡', color: '#646CFF' },
-            { name: 'Linux', icon: '🐧', color: '#FCC624' },
+            { name: 'DSA', icon: '🧮', color: '#9333EA' },
+            { name: 'Cron Jobs', icon: '⏰', color: '#00D8FF' },
         ],
     ];
 

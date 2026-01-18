@@ -74,7 +74,7 @@ const Navbar = () => {
 
                 {/* CTA Button - Desktop */}
                 <a
-                    href="#contact"
+                    href="https://drive.google.com/file/d/1l1jcsZfeHHR8nNRW0g8yeDYM32rGLkqq/view?usp=drive_link"
                     className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-full transition-all duration-300"
                 >
                     <span>My Resume</span>
@@ -147,7 +147,7 @@ const Navbar = () => {
                 {/* Sidebar CTA */}
                 <div className="p-4 border-t border-slate-800">
                     <a
-                        href="#contact"
+                        href="https://drive.google.com/file/d/1l1jcsZfeHHR8nNRW0g8yeDYM32rGLkqq/view?usp=drive_link"
                         onClick={handleNavClick}
                         className="block py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white text-center text-sm font-semibold rounded-lg transition-colors"
                     >
