@@ -1,14 +1,26 @@
+import Threads from './Threads';
+
 const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center text-center px-4"
+            className="relative min-h-screen flex items-center justify-center text-center overflow-hidden"
         >
-            <div className="max-w-4xl w-full">
+            {/* Threads Background Effect - Full screen behind content */}
+            <div className="absolute inset-0 z-0">
+                <Threads
+                    amplitude={2.3}
+                    distance={0.5}
+                    enableMouseInteraction={true}
+                />
+            </div>
+
+            {/* Content - Above background */}
+            <div className="relative z-10 max-w-4xl w-full px-4">
                 <div className="space-y-10">
                     {/* Professional greeting with subtle animation delay */}
                     <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                        <span className="inline-block py-1 px-3 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold tracking-wider uppercase border border-purple-500/20">
+                        <span className="inline-block py-1 px-3 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold tracking-wider uppercase border border-purple-500/20 backdrop-blur-sm">
                             Available for work
                         </span>
                     </div>
@@ -45,7 +57,7 @@ const Hero = () => {
                         </a>
                         <a
                             href="#contact"
-                            className="px-10 py-5 border-2 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/5 font-bold rounded-2xl transition-all duration-300 active:scale-95"
+                            className="px-10 py-5 border-2 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/5 font-bold rounded-2xl transition-all duration-300 active:scale-95 backdrop-blur-sm"
                         >
                             Get in Touch
                         </a>
@@ -54,7 +66,7 @@ const Hero = () => {
             </div>
 
             {/* Elegant scroll indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50 z-10">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">Scroll</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-purple-500 to-transparent"></div>
             </div>
@@ -63,3 +75,4 @@ const Hero = () => {
 }
 
 export default Hero
+

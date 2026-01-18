@@ -14,7 +14,7 @@ function App() {
       <NavPills />
 
       {/* Main Content - Centered */}
-      <main className="main-content">
+      <main>
         <Hero />
         <About />
         <Skills />
