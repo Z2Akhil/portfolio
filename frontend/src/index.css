@@ -1,104 +1,55 @@
 @import "tailwindcss";
 
-/* Custom CSS Variables for theming - Premium Dark Theme */
+/* CSS Variables for theming */
 :root {
   --primary: #a855f7;
   --primary-dark: #9333ea;
   --primary-light: #c084fc;
-  --secondary: #10b981;
   --background: #0a0a0a;
   --surface: #121212;
-  --surface-light: #1e1e1e;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent: #a855f7;
-  --glass: rgba(26, 26, 26, 0.7);
-  --glass-border: rgba(168, 85, 247, 0.2);
 }
 
-/* Smooth scrolling for the entire page */
+/* Base Styles */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--text-primary);
+  background: #0a0a0a;
+  color: #f8fafc;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
-/* Subtle background glow effect */
+/* Subtle background glow */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--surface-light);
-  border: 2px solid var(--background);
+  background: #1e1e1e;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: #a855f7;
 }
 
-/* ==================== */
-/* Layout Styles        */
-/* ==================== */
-
-.portfolio-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Main Content Area - Full Page Coverage */
-.main-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-  flex: 1;
-}
-
-/* Navbar Styles */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-/* ==================== */
-/* Section Styles       */
-/* ==================== */
-
+/* Section Animation */
 section {
   padding: 100px 0;
   opacity: 0;
@@ -110,23 +61,15 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Marquee Animations for Skills Slider */
+/* Skills Marquee Animation */
 @keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 @keyframes marquee-right {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
 }
 
 .animate-marquee-left {
@@ -137,6 +80,7 @@ section {
   animation: marquee-right linear infinite;
 }
 
+/* Gradient Text - used in titles */
 .section-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
@@ -150,68 +94,23 @@ section {
 
 .section-subtitle {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: #94a3b8;
   margin-bottom: 4rem;
   max-width: 700px;
   line-height: 1.6;
 }
 
-/* ==================== */
-/* Hero Specific        */
-/* ==================== */
-
 .hero-gradient-text {
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ==================== */
-/* Cards & Containers   */
-/* ==================== */
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 32px;
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.15);
-}
-
-/* ==================== */
-/* Responsive Design    */
-/* ==================== */
-
-@media (max-width: 1024px) {
-  .main-content {
-    padding: 0 24px;
-  }
-}
-
+/* Responsive Section Padding */
 @media (max-width: 640px) {
-  .main-content {
-    padding: 0 20px;
-  }
-  
-  .nav-pills {
-    top: 15px;
-    padding: 8px 12px;
-    gap: 6px;
-  }
-  
-  .nav-pill {
-    width: 40px;
-    height: 40px;
-  }
-  
   section {
-    padding: 100px 0;
+    padding: 80px 0;
   }
 }
+

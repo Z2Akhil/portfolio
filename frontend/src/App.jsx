@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="portfolio-layout">
+    <div className="min-h-screen flex flex-col">
       {/* Navbar - Fixed Top */}
       <Navbar />
 
