@@ -1,61 +1,51 @@
 const Skills = () => {
-    const skills = [
-        { name: 'React', level: 90, color: 'from-purple-400 to-purple-600' },
-        { name: 'JavaScript', level: 85, color: 'from-purple-400 to-purple-600' },
-        { name: 'Node.js', level: 80, color: 'from-purple-400 to-purple-600' },
-        { name: 'TypeScript', level: 75, color: 'from-purple-400 to-purple-600' },
-        { name: 'Tailwind CSS', level: 90, color: 'from-purple-400 to-purple-600' },
-        { name: 'MongoDB', level: 70, color: 'from-purple-400 to-purple-600' },
-    ]
-
-    const tools = [
-        'Git', 'VS Code', 'Figma', 'Docker', 'Postman', 'GitHub'
+    const skillCategories = [
+        {
+            title: 'Frontend Development',
+            skills: ['React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Redux', 'Next.js']
+        },
+        {
+            title: 'Backend & Database',
+            skills: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs', 'Cloudinary']
+        },
+        {
+            title: 'Tools & Workflow',
+            skills: ['Git', 'Docker', 'Postman', 'Vite', 'Figma', 'GitHub']
+        }
     ]
 
     return (
-        <section id="skills" className="py-20" style={{ background: 'var(--background)' }}>
-            <div className="max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        My <span className="text-purple-500">Skills</span>
+        <section id="skills">
+            <div className="max-w-4xl mx-auto">
+                <div className="mb-16 text-left">
+                    <h2 className="section-title">
+                        Technical <span className="hero-gradient-text">Expertise</span>
                     </h2>
-                    <div className="w-24 h-1 bg-purple-500 rounded-full"></div>
+                    <p className="section-subtitle">
+                        A comprehensive set of tools and technologies I use to bring ideas to life.
+                    </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    {/* Skills Bars */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-semibold text-white mb-6">Technical Skills</h3>
-                        {skills.map((skill) => (
-                            <div key={skill.name} className="space-y-2">
-                                <div className="flex justify-between">
-                                    <span className="text-slate-300 font-medium">{skill.name}</span>
-                                    <span className="text-purple-400">{skill.level}%</span>
-                                </div>
-                                <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
-                                    <div
-                                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-500`}
-                                        style={{ width: `${skill.level}%` }}
-                                    ></div>
+                <div className="grid md:grid-cols-1 gap-8">
+                    {skillCategories.map((category) => (
+                        <div key={category.title} className="card group">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors shrink-0">
+                                    {category.title}
+                                </h3>
+                                <div className="flex flex-wrap gap-3 md:justify-end">
+                                    {category.skills.map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="px-5 py-2 bg-slate-900/50 text-slate-300 text-sm font-medium rounded-xl border border-slate-800 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300"
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
-                        ))}
-                    </div>
-
-                    {/* Tools */}
-                    <div>
-                        <h3 className="text-xl font-semibold text-white mb-6">Tools & Technologies</h3>
-                        <div className="flex flex-wrap gap-3">
-                            {tools.map((tool) => (
-                                <span
-                                    key={tool}
-                                    className="px-4 py-2 bg-zinc-800 text-slate-300 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 cursor-default"
-                                >
-                                    {tool}
-                                </span>
-                            ))}
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

@@ -1,5 +1,4 @@
 import './App.css'
-import ProfileCard from './components/ProfileCard'
 import NavPills from './components/NavPills'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -14,10 +13,7 @@ function App() {
       {/* Navigation Pills - Top Center */}
       <NavPills />
 
-      {/* Fixed Profile Card - Left Side */}
-      <ProfileCard />
-
-      {/* Main Content - Right Side */}
+      {/* Main Content - Centered */}
       <main className="main-content">
         <Hero />
         <About />

@@ -2,34 +2,61 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center pt-24"
-            style={{ background: 'var(--background)' }}
+            className="min-h-screen flex items-center justify-center text-center px-4"
         >
-            <div className="max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div className="space-y-6">
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                        Let's Create<br />
-                        Something <span className="text-purple-500">Amazing</span>
+            <div className="max-w-4xl w-full">
+                <div className="space-y-10">
+                    {/* Professional greeting with subtle animation delay */}
+                    <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                        <span className="inline-block py-1 px-3 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold tracking-wider uppercase border border-purple-500/20">
+                            Available for work
+                        </span>
+                    </div>
+
+                    {/* Main headline - Expansive and bold */}
+                    <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
+                        Building <span className="hero-gradient-text">digital</span><br />
+                        experiences.
                     </h1>
-                    <p className="text-slate-400 text-lg max-w-xl">
-                        I craft beautiful, user-friendly web applications with modern technologies.
-                        Passionate about creating impactful digital experiences.
-                    </p>
-                    <div className="flex gap-4 pt-4">
+
+                    {/* Professional title and description - Simple yet impactful */}
+                    <div className="space-y-6 max-w-2xl mx-auto">
+                        <h2 className="text-2xl sm:text-3xl text-slate-200 font-medium">
+                            Full Stack Developer & Designer
+                        </h2>
+                        <p className="text-slate-400 text-lg sm:text-xl leading-relaxed">
+                            I specialize in creating high-performance, accessible, and beautiful
+                            web applications that solve real-world problems with modern tech.
+                        </p>
+                    </div>
+
+                    {/* CTA Buttons - Premium feel */}
+                    <div className="flex flex-wrap gap-6 pt-8 justify-center items-center">
                         <a
                             href="#projects"
-                            className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25"
+                            className="group relative px-10 py-5 bg-purple-600 text-white font-bold rounded-2xl transition-all duration-300 hover:bg-purple-700 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)] active:scale-95"
                         >
-                            View Projects
+                            <span className="relative z-10 flex items-center gap-2">
+                                View Selection
+                                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </span>
                         </a>
                         <a
                             href="#contact"
-                            className="px-8 py-3 border border-purple-500 text-purple-400 hover:bg-purple-500/10 font-medium rounded-lg transition-all duration-300"
+                            className="px-10 py-5 border-2 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/5 font-bold rounded-2xl transition-all duration-300 active:scale-95"
                         >
-                            Contact Me
+                            Get in Touch
                         </a>
                     </div>
                 </div>
+            </div>
+
+            {/* Elegant scroll indicator */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50">
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">Scroll</span>
+                <div className="w-[1px] h-12 bg-gradient-to-b from-purple-500 to-transparent"></div>
             </div>
         </section>
     )
