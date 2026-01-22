@@ -34,12 +34,12 @@ const Hero = () => {
                     {/* Professional title and description - Simple yet impactful */}
                     <div className="space-y-6 max-w-2xl mx-auto">
                         <h2 className="text-2xl sm:text-3xl text-slate-200 font-medium">
-                            Full Stack Engineer | MERN Stack
+                            Full Stack Developer
                         </h2>
                         <p className="text-slate-400 text-lg sm:text-xl leading-relaxed">
-                            I specialize in MERN stack development, scalable backend systems, and
-                            real-time communication. Built production apps including a healthcare platform
-                            and multiplayer games.
+                            I build end-to-end web applications with modern technologies, scalable 
+                            backend architectures, and real-time features. Shipped production apps 
+                            including a healthcare platform and multiplayer games.
                         </p>
                     </div>
 

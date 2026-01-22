@@ -34,14 +34,14 @@ const About = () => {
                     {/* About Text - Right/Bottom */}
                     <div className="flex-1 space-y-6 text-center md:text-left">
                         <p className="text-slate-300 text-xl leading-relaxed font-light">
-                            I'm a full-stack engineer specializing in MERN stack development,
-                            scalable backend systems, and real-time communication using Socket.IO.
+                            I'm a full-stack developer passionate about building web applications
+                            with clean architecture, scalable backends, and seamless real-time experiences.
                             Currently pursuing B.Tech in CSE at NIT Jamshedpur.
                         </p>
                         <p className="text-slate-400 text-lg leading-relaxed">
-                            I've built and deployed production applications including a healthcare
-                            booking platform and multiplayer typing games. Strong understanding of
-                            performance optimization, system design, and algorithms.
+                            I've shipped production applications including a healthcare booking platform
+                            and multiplayer typing games. Strong foundation in performance optimization,
+                            system design, and data structures & algorithms.
                         </p>
 
                         {/* Quick Stats */}

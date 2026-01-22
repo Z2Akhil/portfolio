@@ -2,7 +2,7 @@ const Projects = () => {
     const projects = [
         {
             title: 'Ayropath',
-            description: 'A complete healthcare testing platform for home sample collections and digital reports. Features secure authentication, booking system, order tracking, and admin dashboard with analytics.',
+            description: 'A full-featured healthcare platform enabling home sample collections and digital report delivery. Includes secure authentication, intelligent booking system, real-time order tracking, and a comprehensive admin dashboard with analytics.',
             tags: ['React', 'Node.js', 'MongoDB', 'Redis', 'JWT'],
             github: 'https://github.com/Z2Akhil',
             live: '#',
@@ -10,7 +10,7 @@ const Projects = () => {
         },
         {
             title: 'TypeClash',
-            description: 'A competitive real-time typing platform with solo and multiplayer modes. Features synchronized gameplay, live progress updates, and player matchmaking using Socket.IO.',
+            description: 'A competitive typing platform featuring solo practice and real-time multiplayer battles. Includes synchronized gameplay, live progress tracking, and intelligent player matchmaking for seamless competitive experiences.',
             tags: ['React', 'Node.js', 'Socket.IO', 'MongoDB'],
             github: 'https://github.com/Z2Akhil',
             live: '#',
