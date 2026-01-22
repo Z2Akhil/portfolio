@@ -43,6 +43,8 @@ const About = () => {
                             I've shipped production applications including a healthcare booking platform
                             and multiplayer typing games. Strong foundation in performance optimization,
                             system design, and data structures & algorithms.
+                            Not the most talkative guy, but if it's about building something cool or debugging at 3 a.m., I'm in.
+                            Hit me up if you wanna chat code, games, or whatever.
                         </p>
 
                         {/* Quick Stats */}
