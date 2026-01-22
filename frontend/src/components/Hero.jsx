@@ -1,56 +1,81 @@
+import { useState, useEffect } from 'react';
 import Threads from './Threads';
+import Particles from './Particles';
 
 const Hero = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <section
             id="home"
             className="relative min-h-screen flex items-center justify-center text-center overflow-hidden"
         >
-            {/* Threads Background Effect - Full screen behind content */}
+            {/* Background Effect - Particles for mobile, Threads for desktop */}
             <div className="absolute inset-0 z-0">
-                <Threads
-                    amplitude={2.3}
-                    distance={0.1}
-                    enableMouseInteraction={true}
-                />
+                {isMobile ? (
+                    <Particles
+                        particleColors={["#ffffff"]}
+                        particleCount={200}
+                        particleSpread={10}
+                        speed={0.1}
+                        particleBaseSize={100}
+                        moveParticlesOnHover
+                        alphaParticles={false}
+                        disableRotation={false}
+                        pixelRatio={1}
+                    />
+                ) : (
+                    <Threads
+                        amplitude={2.3}
+                        distance={0.1}
+                        enableMouseInteraction={true}
+                    />
+                )}
             </div>
 
             {/* Content - Above background */}
             <div className="relative z-10 max-w-4xl w-full px-4">
-                <div className="space-y-10">
-                    {/* Professional greeting with subtle animation delay */}
+                <div className="space-y-8">
+                    {/* Greeting badge */}
                     <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                         <span className="inline-block py-1 px-3 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold tracking-wider uppercase border border-purple-500/20 backdrop-blur-sm">
-                            B.Tech CSE @ NIT Jamshedpur
+                            👋 Hello, I'm Akhil
                         </span>
                     </div>
 
-                    {/* Main headline - Expansive and bold */}
-                    <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
-                        Building <span className="hero-gradient-text">scalable</span><br />
-                        web apps.
+                    {/* Main headline - Personal introduction */}
+                    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+                        Full Stack Developer<br />
+                        <span className="hero-gradient-text">passionate about code.</span>
                     </h1>
 
-                    {/* Professional title and description - Simple yet impactful */}
-                    <div className="space-y-6 max-w-2xl mx-auto">
-                        <h2 className="text-2xl sm:text-3xl text-slate-200 font-medium">
-                            Full Stack Developer
-                        </h2>
+                    {/* Description - Conversational and personal */}
+                    <div className="space-y-4 max-w-2xl mx-auto">
                         <p className="text-slate-400 text-lg sm:text-xl leading-relaxed">
-                            I build end-to-end web applications with modern technologies, scalable 
-                            backend architectures, and real-time features. Shipped production apps 
-                            including a healthcare platform and multiplayer games.
+                            B.Tech CSE student at NIT Jamshedpur. I love turning ideas into
+                            real products — from healthcare platforms to multiplayer games.
+                            Currently exploring backend systems and real-time applications.
                         </p>
                     </div>
 
-                    {/* CTA Buttons - Premium feel */}
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-6 sm:pt-8 justify-center items-center px-4 sm:px-0">
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 justify-center items-center px-4 sm:px-0">
                         <a
                             href="#projects"
                             className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-purple-600 text-white font-bold rounded-2xl transition-all duration-300 hover:bg-purple-700 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)] active:scale-95 text-center"
                         >
                             <span className="flex items-center justify-center gap-2">
-                                View Projects
+                                See My Work
                                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
@@ -60,7 +85,7 @@ const Hero = () => {
                             href="#contact"
                             className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/5 font-bold rounded-2xl transition-all duration-300 active:scale-95 text-center"
                         >
-                            Get in Touch
+                            Let's Connect
                         </a>
                     </div>
                 </div>
