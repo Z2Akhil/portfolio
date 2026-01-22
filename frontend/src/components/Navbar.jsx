@@ -7,7 +7,7 @@ const Navbar = () => {
 
     // Get name from environment variables
     const myName = import.meta.env.VITE_NAME || 'Akhil Kumar'
-    const initials = myName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+    const initials = "</>"
 
     const navItems = [
         { id: 'home', label: 'Home' },

@@ -49,7 +49,7 @@ const Hero = () => {
                     {/* Greeting badge */}
                     <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                         <span className="inline-block py-1 px-3 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold tracking-wider uppercase border border-purple-500/20 backdrop-blur-sm">
-                            👋 Hello, I'm Akhil
+                            B-tech CSE @ NIT Jamshedpur
                         </span>
                     </div>
 
@@ -61,7 +61,7 @@ const Hero = () => {
 
                     {/* Description - Conversational and personal */}
                     <div className="space-y-4 max-w-2xl mx-auto">
-                        <p className="text-slate-400 text-lg sm:text-xl leading-relaxed">
+                        <p className="text-white-400 text-lg sm:text-xl leading-relaxed">
                             B.Tech CSE student at NIT Jamshedpur. I love turning ideas into
                             real products — from healthcare platforms to multiplayer games.
                             Currently exploring backend systems and real-time applications.

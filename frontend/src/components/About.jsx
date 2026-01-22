@@ -1,6 +1,6 @@
 const About = () => {
     // Profile image - add your image to public folder or use a URL
-    const profileImage = import.meta.env.VITE_PROFILE_IMAGE || '/profile.jpg';
+    const profileImage = import.meta.env.VITE_PROFILE_IMAGE || '/profile.jpeg';
 
     return (
         <section id="about">
@@ -22,13 +22,14 @@ const About = () => {
                                     src={profileImage}
                                     alt="Profile"
                                     className="w-full h-full object-cover"
+                                    loading="eager"
                                     onError={(e) => {
-                                        // Fallback to placeholder if image fails to load
                                         e.target.src = 'https://ui-avatars.com/api/?name=AK&size=256&background=a855f7&color=fff&bold=true';
                                     }}
                                 />
                             </div>
                         </div>
+                        <div className="text-center text-xl font-bold text-purple-400 mt-6">Akhil Kumar</div>
                     </div>
 
                     {/* About Text - Right/Bottom */}
