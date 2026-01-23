@@ -23,7 +23,7 @@ const Projects = () => {
             <div className="max-w-6xl mx-auto px-4">
                 <div className="mb-16 text-center">
                     <h2 className="section-title">
-                        Selected <span className="hero-gradient-text">Projects</span>
+                        <span className="hero-gradient-text">Projects</span>
                     </h2>
                     <p className="section-subtitle mx-auto">
                         A showcase of my recent work, featuring web applications and innovative solutions.
